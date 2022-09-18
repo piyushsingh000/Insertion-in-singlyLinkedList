@@ -1,0 +1,74 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Node {
+    public:
+    int data;
+    Node* next;
+    
+    Node (int data){
+        this ->data = data;
+        this ->next = NULL;
+    }
+   
+    
+};
+ void InsertatHead(Node* &head , int d){
+        Node* temp = new Node(d);
+        temp -> next = head;
+        head = temp;
+        
+    }
+     void insertAtTail(Node* &tail, int d){
+        Node* temp = new Node(d);
+        tail-> next = temp;
+        tail = temp;
+    }
+    
+    void insertAtPosition(Node* &head ,int position, int d){
+        Node* temp = head;
+        int cnt = 1;
+        while(cnt< position-1){
+            temp = temp -> next;
+            cnt++;
+        }
+        Node* nodeToInsert = new Node(d);
+        nodeToInsert ->next = temp -> next; 
+        temp ->next = nodeToInsert;
+        
+    }
+    void print(Node* &head){
+        Node* temp = head;
+        while (temp != NULL){
+            cout<<temp ->data <<" " ;
+            temp = temp -> next ;
+        }
+        cout<<endl;
+    }
+    
+   
+
+
+int main (){
+    Node* hero = new Node(5);
+    // cout<<hero ->data <<endl;
+    // cout<< hero ->next<<endl;
+    
+    Node* head = hero;
+    
+    Node* tail = hero;
+    print(tail);
+    
+    InsertatHead(head , 10);
+    print(head);
+     InsertatHead(head , 20);
+    print(head);
+     insertAtTail(tail , 50);
+    print(head);
+    
+    insertAtPosition(head, 2, 30);
+    print(head);
+    
+    return 0;
+    
+}
